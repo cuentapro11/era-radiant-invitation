@@ -1,0 +1,763 @@
+/* Reset y variables CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Colores */
+    --coral: #F28C8C;
+    --coral-light: #FFF5F5;
+    --coral-dark: #E67575;
+    --pink-soft: #FFFAFA;
+    --gold-matte: #D4AF37;
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --white: #ffffff;
+    
+    /* Sombras */
+    --shadow-elegant: 0 10px 30px -10px rgba(242, 140, 140, 0.3);
+    --shadow-glow: 0 0 40px rgba(242, 140, 140, 0.4);
+    --shadow-soft: 0 4px 20px -4px rgba(242, 140, 140, 0.2);
+    
+    /* Transiciones */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.6;
+    color: var(--text-primary);
+    background: linear-gradient(135deg, #ffeef0 0%, #fff5f5 100%);
+    min-height: 100vh;
+}
+
+/* Contenedor principal */
+.main-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: white;
+    box-shadow: var(--shadow-elegant);
+    position: relative;
+    overflow: hidden;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* Tipografía */
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+}
+
+/* Animaciones */
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(5deg); }
+}
+
+@keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(242, 140, 140, 0.3); }
+    50% { box-shadow: 0 0 40px rgba(242, 140, 140, 0.6); }
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+@keyframes fade-in {
+    0% { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-heartbeat {
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+.animate-fade-in {
+    animation: fade-in 0.3s ease-out;
+}
+
+/* Botones */
+.btn-primary, .btn-coral, .btn-outline {
+    padding: 12px 24px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    transition: var(--transition-smooth);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+
+.btn-primary, .btn-coral {
+    background: var(--coral);
+    color: white;
+    box-shadow: var(--shadow-soft);
+}
+
+.btn-primary:hover, .btn-coral:hover {
+    background: var(--coral-dark);
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    background: white;
+    color: var(--coral);
+    border: 2px solid var(--coral);
+}
+
+.btn-outline:hover {
+    background: var(--coral-light);
+    border-color: var(--coral-dark);
+}
+
+.btn-coral.large {
+    padding: 16px 32px;
+    font-size: 18px;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+.modal.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 24px;
+    border: 1px solid rgba(242, 140, 140, 0.2);
+    box-shadow: var(--shadow-elegant);
+    max-width: 400px;
+    width: 90%;
+    animation: fade-in 0.3s ease-out;
+}
+
+.modal-content.small {
+    max-width: 300px;
+}
+
+.modal-body {
+    text-align: center;
+    padding: 32px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px;
+    border-bottom: 1px solid var(--coral-light);
+}
+
+.modal-info {
+    padding: 24px;
+    font-size: 18px;
+    color: var(--coral);
+    font-weight: 600;
+}
+
+.heart-icon {
+    margin-bottom: 24px;
+}
+
+.heart-icon i {
+    width: 48px;
+    height: 48px;
+    color: var(--coral);
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+.modal-text h2 {
+    font-size: 28px;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+}
+
+.modal-text p {
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+}
+
+.modal-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-secondary);
+    transition: var(--transition-smooth);
+}
+
+.close-btn:hover {
+    color: var(--text-primary);
+}
+
+/* Music Player */
+.music-player {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 50;
+}
+
+.music-btn {
+    background: var(--coral);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    cursor: pointer;
+    box-shadow: var(--shadow-elegant);
+    transition: var(--transition-smooth);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: float 3s ease-in-out infinite;
+}
+
+.music-btn:hover {
+    background: var(--coral-dark);
+    box-shadow: var(--shadow-glow);
+}
+
+/* Hero Section */
+.hero-section {
+    min-height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), 
+                url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1600&h=900&fit=crop&crop=center') center/cover fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    color: white;
+    text-align: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4));
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 600px;
+    padding: 24px;
+    animation: fade-in 1s ease-out;
+}
+
+.hero-content h1 {
+    font-size: clamp(3rem, 8vw, 7rem);
+    margin-bottom: 16px;
+    font-weight: 700;
+}
+
+.hero-content p {
+    font-size: clamp(1.25rem, 4vw, 2rem);
+    margin-bottom: 32px;
+    font-weight: 300;
+    opacity: 0.9;
+}
+
+.hero-date {
+    font-size: clamp(1rem, 3vw, 1.5rem);
+}
+
+/* Countdown Section */
+.countdown-section {
+    padding: 80px 0;
+    background: white;
+}
+
+.countdown-card {
+    background: white;
+    border-radius: 24px;
+    box-shadow: var(--shadow-elegant);
+    border: 1px solid rgba(242, 140, 140, 0.1);
+    padding: 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.countdown-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, var(--pink-soft), var(--coral-light));
+    opacity: 0.3;
+}
+
+.countdown-card > * {
+    position: relative;
+    z-index: 10;
+}
+
+.countdown-icon {
+    margin-bottom: 24px;
+}
+
+.countdown-icon i {
+    width: 32px;
+    height: 32px;
+    color: var(--coral);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.countdown-card h3 {
+    font-size: 32px;
+    margin-bottom: 24px;
+    color: var(--text-primary);
+}
+
+.countdown-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.countdown-item {
+    background: var(--coral);
+    color: white;
+    border-radius: 16px;
+    padding: 24px 16px;
+    box-shadow: var(--shadow-soft);
+}
+
+.countdown-number {
+    font-size: 48px;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.countdown-label {
+    font-size: 14px;
+    opacity: 0.9;
+    margin-top: 4px;
+}
+
+.countdown-date {
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+/* Wave Dividers */
+.wave-divider {
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.wave-divider svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 64px;
+}
+
+.wave-divider.flip {
+    transform: rotate(180deg);
+}
+
+/* Sections */
+.section-header {
+    text-align: center;
+    margin-bottom: 64px;
+}
+
+.section-icon {
+    margin-bottom: 24px;
+}
+
+.section-icon i {
+    width: 48px;
+    height: 48px;
+    color: var(--coral);
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+.section-title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    margin-bottom: 16px;
+    color: var(--text-primary);
+    position: relative;
+}
+
+.section-subtitle {
+    font-size: 20px;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+}
+
+/* Celebration Section */
+.celebration-section {
+    padding: 80px 0;
+    background: linear-gradient(180deg, var(--pink-soft), var(--coral-light));
+}
+
+.celebration-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 32px;
+}
+
+.celebration-card {
+    background: white;
+    border-radius: 24px;
+    padding: 48px 32px;
+    text-align: center;
+    box-shadow: var(--shadow-elegant);
+    border: 1px solid rgba(242, 140, 140, 0.1);
+    transition: var(--transition-smooth);
+}
+
+.celebration-card:hover {
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-4px);
+}
+
+.celebration-card i {
+    width: 48px;
+    height: 48px;
+    color: var(--coral);
+    margin-bottom: 16px;
+    transition: var(--transition-smooth);
+}
+
+.celebration-card:hover i {
+    animation: pulse 1s ease-in-out;
+}
+
+.celebration-card h3 {
+    font-size: 24px;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+}
+
+.celebration-card p {
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+}
+
+/* Gallery Section */
+.gallery-section {
+    padding: 80px 0;
+    background: white;
+}
+
+.gallery-container {
+    background: white;
+    border-radius: 24px;
+    box-shadow: var(--shadow-elegant);
+    border: 1px solid rgba(242, 140, 140, 0.1);
+    overflow: hidden;
+    position: relative;
+}
+
+.gallery-image {
+    aspect-ratio: 16/9;
+    overflow: hidden;
+}
+
+.gallery-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.5s ease;
+}
+
+.gallery-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-smooth);
+    color: var(--coral);
+    box-shadow: var(--shadow-soft);
+}
+
+.gallery-btn:hover {
+    background: white;
+    box-shadow: var(--shadow-glow);
+}
+
+.gallery-btn.prev {
+    left: 16px;
+}
+
+.gallery-btn.next {
+    right: 16px;
+}
+
+.gallery-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ddd;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.dot.active {
+    background: var(--coral);
+    box-shadow: var(--shadow-glow);
+}
+
+.dot:hover {
+    background: rgba(242, 140, 140, 0.5);
+}
+
+/* Party Section */
+.party-section {
+    padding: 80px 0;
+    background: linear-gradient(180deg, var(--pink-soft), var(--coral-light));
+}
+
+.party-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 32px;
+}
+
+.party-card {
+    background: white;
+    border-radius: 24px;
+    padding: 48px 32px;
+    text-align: center;
+    box-shadow: var(--shadow-elegant);
+    border: 1px solid rgba(242, 140, 140, 0.1);
+    transition: var(--transition-smooth);
+}
+
+.party-card:hover {
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-4px);
+}
+
+.party-icon {
+    background: var(--coral-light);
+    border-radius: 50%;
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.party-icon i {
+    width: 32px;
+    height: 32px;
+    color: var(--coral);
+    transition: var(--transition-smooth);
+}
+
+.party-card:hover .party-icon i {
+    animation: pulse 1s ease-in-out;
+}
+
+.party-card h3 {
+    font-size: 24px;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+}
+
+.party-card p {
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+    font-size: 14px;
+}
+
+/* Gifts Section */
+.gifts-section {
+    padding: 80px 0;
+    background: white;
+    text-align: center;
+}
+
+.gifts-container {
+    background: linear-gradient(180deg, var(--pink-soft), var(--coral-light));
+    border-radius: 24px;
+    padding: 64px;
+    box-shadow: var(--shadow-elegant);
+    border: 1px solid rgba(242, 140, 140, 0.1);
+}
+
+/* Footer Section */
+.footer-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, var(--coral), var(--coral-dark));
+    color: white;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+.footer-icons {
+    display: flex;
+    gap: 16px;
+}
+
+.footer-icons i:nth-child(1),
+.footer-icons i:nth-child(3) {
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+.footer-icons i:nth-child(2) {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.footer-icons i {
+    width: 32px;
+    height: 32px;
+}
+
+.footer-text h2 {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    margin-bottom: 8px;
+}
+
+.footer-text h3 {
+    font-size: clamp(1.5rem, 6vw, 3rem);
+    margin-bottom: 8px;
+    font-weight: 300;
+}
+
+.footer-text p {
+    font-size: 20px;
+    opacity: 0.9;
+}
+
+.footer-date {
+    padding-top: 32px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.footer-date p {
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .main-container {
+        margin: 0;
+        box-shadow: none;
+    }
+    
+    .container {
+        padding: 0 16px;
+    }
+    
+    .countdown-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    
+    .countdown-number {
+        font-size: 32px;
+    }
+    
+    .celebration-grid,
+    .party-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    
+    .modal-buttons {
+        flex-direction: column;
+    }
+    
+    .gallery-btn {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .section-header {
+        margin-bottom: 48px;
+    }
+    
+    .celebration-card,
+    .party-card {
+        padding: 32px 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .countdown-item {
+        padding: 16px 12px;
+    }
+    
+    .countdown-number {
+        font-size: 24px;
+    }
+    
+    .countdown-label {
+        font-size: 12px;
+    }
+    
+    .hero-content {
+        padding: 16px;
+    }
+}
