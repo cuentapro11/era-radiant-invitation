@@ -12,7 +12,7 @@ export const HeroSection = () => {
       
       <div className="relative z-10 text-center text-white max-w-2xl mx-auto px-6">
         <div className="space-y-6 animate-fade-in">
-          <h1 className="text-5xl md:text-7xl font-serif font-bold mb-4 animate-shimmer">
+          <h1 className="text-5xl md:text-7xl font-serif font-bold mb-4">
             Mis XV Años
           </h1>
           <p className="text-xl md:text-2xl font-light mb-8 opacity-90">

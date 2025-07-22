@@ -17,10 +17,6 @@ const Index = () => {
 
   const handleEnterWithMusic = () => {
     setMusicStarted(true);
-    // Small delay to ensure the component is rendered
-    setTimeout(() => {
-      musicPlayerRef.current?.playWithSound();
-    }, 500);
   };
 
   const handleEnterWithoutMusic = () => {
@@ -45,7 +41,7 @@ const Index = () => {
           <MusicPlayer 
             ref={musicPlayerRef}
             youtubeVideoId="dQw4w9WgXcQ" // Reemplazar con el ID del video de YouTube deseado
-            autoStart={false}
+            autoStart={true}
           />
         )}
 

@@ -12,7 +12,7 @@ interface MusicPlayerProps {
 }
 
 const MusicPlayer = forwardRef<MusicPlayerHandle, MusicPlayerProps>(
-  ({ youtubeVideoId = "dQw4w9WgXcQ", autoStart = false }, ref) => {
+  ({ youtubeVideoId = "dQw4w9WgXcQ", autoStart = true }, ref) => {
     const [isPlaying, setIsPlaying] = useState(false);
     const [isLoaded, setIsLoaded] = useState(false);
     const playerRef = useRef<any>(null);
@@ -43,7 +43,15 @@ const MusicPlayer = forwardRef<MusicPlayerHandle, MusicPlayerProps>(
             mute: 1, // empieza en mute
           },
           events: {
-            onReady: () => setIsLoaded(true),
+            onReady: () => {
+              setIsLoaded(true);
+              if (autoStart) {
+                setTimeout(() => {
+                  playerRef.current?.unMute();
+                  playerRef.current?.playVideo();
+                }, 1000);
+              }
+            },
             onStateChange: (event: any) => {
               const YT = (window as any).YT;
               if (event.data === YT?.PlayerState.PLAYING) setIsPlaying(true);
