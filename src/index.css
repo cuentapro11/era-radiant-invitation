@@ -9,34 +9,53 @@ All colors MUST be HSL.
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 0 0% 20%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 0 0% 20%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 0 0% 20%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 346 77% 69%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 350 100% 97%;
+    --secondary-foreground: 346 77% 69%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 346 77% 69%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 346 77% 69%;
 
-    --radius: 0.5rem;
+    /* Coral and pink theme colors */
+    --coral: 346 77% 69%;
+    --coral-light: 350 100% 97%;
+    --coral-dark: 346 77% 55%;
+    --pink-soft: 330 100% 98%;
+    --gold-matte: 43 74% 66%;
+
+    /* Gradients */
+    --gradient-coral: linear-gradient(135deg, hsl(var(--coral)), hsl(var(--coral-dark)));
+    --gradient-soft: linear-gradient(180deg, hsl(var(--pink-soft)), hsl(var(--coral-light)));
+    
+    /* Shadows */
+    --shadow-elegant: 0 10px 30px -10px hsl(var(--coral) / 0.3);
+    --shadow-glow: 0 0 40px hsl(var(--coral) / 0.4);
+    --shadow-soft: 0 4px 20px -4px hsl(var(--coral) / 0.2);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --radius: 1rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +119,79 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-serif;
+  }
+
+  /* Parallax effect for hero section */
+  .parallax-hero {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  /* Wave dividers */
+  .wave-divider {
+    width: 100%;
+    height: 60px;
+    background: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'><path d='M1200 120L0 16.48V0h1200v120z' fill='%23ffffff'></path></svg>") no-repeat;
+    background-size: cover;
+  }
+
+  /* Animations */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(5deg); }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px hsl(var(--coral) / 0.3); }
+    50% { box-shadow: 0 0 40px hsl(var(--coral) / 0.6); }
+  }
+
+  @keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+
+  @keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s ease-in-out infinite;
+  }
+
+  .animate-heartbeat {
+    animation: heartbeat 1.5s ease-in-out infinite;
+  }
+
+  /* Flourish decorations */
+  .flourish::before,
+  .flourish::after {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 2px;
+    background: var(--gradient-coral);
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .flourish::before {
+    left: -80px;
+  }
+
+  .flourish::after {
+    right: -80px;
   }
 }
